@@ -1,0 +1,18 @@
+/*These should go in the RSI css. <sponsor_name>.css */
+#fn-e div.promo.mini-ad.target .hd {
+	zoom: 1;
+  /*Set Header Background Color Here. Use dominant color in logo. If unsure ask CS. */
+	background-color: #E31936;
+}
+#fn-e div.promo.mini-ad.target .hd h4{
+  /*Set Header Text Color Here*/
+  color: #fff;
+}
+/* vertically center 'sponsored by' text by setting the line-height to height of sponsor logo */
+#fn-e .mini-ad.target .ft p span {
+	line-height: 40px;
+	vertical-align: baseline;
+}
+#fn-e .mini-ad.target .ft p img{
+  vertical-align: middle;
+}

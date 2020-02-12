@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<base href="http://images.foodnetwork.com" />
+<title>Untitled Document</title>
+
+
+<!-- FOOD SPECIFIC -->
+<link rel="stylesheet" type="text/css" href="/webfood/fn20/css/sni-food-a.css"/> 
+<link rel="stylesheet" type="text/css" href="/webfood/fn20/css/sni-food-b.css"/>
+<!-- FOOD SPECIFIC -->
+
+
+
+
+
+
+<script>
+
+/*
+	RSI Creative Peddler
+*/
+(function(window, undefined){
+var cache = {};
+
+this.RSI = function tmpl(str, data){
+/*
+	Figure out if we're getting a template, or if we need to
+	load the template - and be sure to cache the result.
+*/
+var fn = !/\W/.test(str) ?
+	cache[str] = cache[str] ||
+		tmpl(document.getElementById(str).innerHTML) :
+			/*
+				Generate a reusable function that will serve as a template
+				generator (and which will be cached).
+			*/
+			new Function("obj",
+				"var p=[],print=function(){p.push.apply(p,arguments);};" +
+				/* Introduce the data as local variables using with(){} */
+				"with(obj){p.push('" +
+					/* Convert the template into pure JavaScript */
+					str
+						.replace(/[\r\t\n]/g, " ")
+						.split("<%").join("\t")
+						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
+						.replace(/\t=(.*?)%>/g, "',$1,'")
+						.split("\t").join("');")
+						.split("%>").join("p.push('")
+						.split("\r").join("\\'")
+				+ "');}return p.join('');");
+	/* Provide some basic currying to the user */
+	return data ? fn( data ) : fn;
+};
+
+this.RSI.fn = {
+	shuffle	: function(o) {
+		for ( var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x );
+		return o;
+		return this;
+	}
+}
+
+this.RSI.prototype = this.RSI.fn;
+
+})(window);
+
+</script>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+	<div id="fn-e">
+		<div id="demo1"></div>
+		<div id="demo2"></div>
+	</div>
+</body>
+</html>
+
+
+
+<!-- CREATIVE #1 -->
+<script id="templ" type="text/html">
+<link rel="stylesheet" type="text/css" href="http://images.foodnetwork.com/webfood/images/sales/search_integration/asi_assets/css/asi-global.css"/>
+<link rel="stylesheet" type="text/css" href="http://10.76.19.200/RSI/clients/carnation.css"/>
+<div id="asi-module">
+	<div class="promo mini-ad carnation pod"> 
+		<div class="hd">
+			<h4>Recipes from Carnation&reg; Breakfast Essentials&trade;</h4>
+		</div>
+		<div class="bd clrfix">
+			<ul id="recipeListContainer">
+				<%
+					/* JS comments must be in the form of THIS */
+					var allRecipes = recipes.length;
+					
+					if ( recipes ) {
+					
+						/* shuffle the recipes and pick out the first x (numRecipes) amount */
+						RSI.fn.shuffle(recipes);
+						
+						for ( var i = 0; i < numRecipes; i++ ) {
+							
+				%>
+					<li class="clrfix"> <a href="<%=recipes[i].adImageLinkID%>" ><img src="<%=imagePath + recipes[i].image%>" alt="<%=recipes[i].altName%>" width="92" height="69"/></a>
+						<div class="asi-inner clrfix">
+							<p class="title"><a href="<%=recipes[i].adLinkID%>" ><%=recipes[i].name%></a></p>
+							<ul class="asi-variable-links">
+								<li><%=recipes[i].var1%></li>
+								<li><%=recipes[i].var2%></li>
+							</ul>
+						</div>
+					</li>
+				<%
+						}
+					}
+				%>
+			</ul>
+		</div>
+		<div class="ft clrfix"> 
+			<p><span>Sponsored by</span><a href="http://ad.doubleclick.net/click;h=v2|409D|0|0|%2a|m;271285010;0-0;0;96987016;31-1|1;53875771|53786352|1;;;pc=[TPAS_ID]%3fhttp://www.carnationbreakfastessentials.com/Products/Default.aspx?source=0E79C81D-0DB1-451E-BB27-50016AB0773E&utm_source=%s&utm_medium=banner&utm_campaign=CBE13&utm_content=%ecid!" target="_blank" title="Canration&reg; Breakfast Essentials&trade;"><img src="http://images.foodnetwork.com/webfood/images/sales/carnation_april_2013/images/carnation_breakfast_88x31.jpg" alt="Carnation&reg; Breakfast Essentials&trade;" width="76" height="31" /></a></p>
+		</div>
+		<div class="tableCell"><img id="viewTracker" src="" style="visibility: hidden;" border="0" height="1" width="1"></div>
+	</div>
+</div>
+</script>
+<script>
+
+var data1 = {
+	"imagePath"		: 'http://images.foodnetwork.com/webfood/images/sales/carnation_april_2013/images/',
+	"numRecipes"	: 4,
+	"recipes"		: [{
+		"name"				: "Apple A La MMM",
+		"image"				: "RX-Carnation_Apple-A-La-Mode_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088644&Redirect=http:%2f%2fFoodNetwork.com/recipes/apple-a-la-mmm-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1"				: "Get Recipe",
+		"var1Link"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088644&Redirect=http:%2f%2fFoodNetwork.com/recipes/apple-a-la-mmm-recipe/index.html",
+		"var1LinkNewWindow"	: "0",
+		"var2"				: "",
+		"var2Link"			: "",
+		"var2LinkNewWindow"	: "0",
+		"keywords": ["Breakfast", "Easy", "Vanilla", "Healthy", "Smoothie", "Smoothies"]
+	}, {
+		"name"				: "Sunrise Surprise Smoothie",
+		"image"				: "RX-CARNATION_Sunrise-Surprise_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088645&Redirect=http:%2f%2fFoodNetwork.com/recipes/sunrise-surprise-smoothie-recipe/index.html",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1"				: "Get Recipe",
+		"var1Link"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088645&Redirect=http:%2f%2fFoodNetwork.com/recipes/sunrise-surprise-smoothie-recipe/index.html",
+		"var1LinkNewWindow"	: "0",
+		"var2"				: "",
+		"var2Link"			: "",
+		"var2LinkNewWindow"	: "0",
+		"keywords": ["Breakfast", "Easy", "Vanilla", "Healthy", "Smoothie", "Smoothies"]
+	}, {
+		"name"				: "Spi&ntilde;a-Colada Smoothie",
+		"image"				: "RX-CARNATION_Spina-Colada_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088646&Redirect=http:%2f%2fFoodNetwork.com/recipes/spi241a-colada-smoothie-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1"				: "Get Recipe",
+		"var1Link"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088646&Redirect=http:%2f%2fFoodNetwork.com/recipes/spi241a-colada-smoothie-recipe/index.html",
+		"var1LinkNewWindow"	: "0",
+		"var2"				: "",
+		"var2Link"			: "",
+		"var2LinkNewWindow"	: "0",
+		"keywords": ["Breakfast", "Easy", "Vanilla", "Healthy", "Smoothie", "Smoothies"]
+	}, {
+		"name"				: "Chocolate, Banana &amp; Peanut Butter Smoothie",
+		"image"				: "RX-Carnation_Chocolate-Banana-Peanut-Malted_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088647&Redirect=http:%2f%2fFoodNetwork.com/recipes/chocolate-banana-peanut-butter-smoothie-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1"				: "Get Recipe",
+		"var1Link"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2088647&Redirect=http:%2f%2fFoodNetwork.com/recipes/chocolate-banana-peanut-butter-smoothie-recipe/index.html",
+		"var1LinkNewWindow"	: "0",
+		"var2"				: "",
+		"var2Link"			: "",
+		"var2LinkNewWindow"	: "0",
+		"keywords": ["Breakfast", "Easy", "Vanilla", "Healthy", "Smoothie", "Smoothies"]
+	}]
+};
+</script>
+
+<!-- CREATIVE #2 -->
+<script id="temp2" type="text/html">
+<link rel="stylesheet" type="text/css" href="http://images.foodnetwork.com/webfood/images/sales/search_integration/asi_assets/css/asi-global.css"/>
+<link rel="stylesheet" type="text/css" href="http://10.76.19.200/RSI/clients/target.css"/>
+<div id="asi-module">
+	<div class="promo mini-ad target pod"> 
+		<div class="hd">
+			<h4>Recipes from Target</h4>
+		</div>
+		<div class="bd clrfix">
+			<ul id="recipeListContainer">
+				<%
+					/* JS comments must be in the form of THIS */
+				
+					var allRecipes = recipes.length;
+					
+					if ( recipes ) {
+					
+						/* shuffle the recipes and pick out the first x (numRecipes) amount */
+						RSI.fn.shuffle(recipes);
+						
+						for ( var i = 0; i < numRecipes; i++ ) {
+							
+				%>
+					<li class="clrfix"> <a href="<%=recipes[i].adImageLinkID%>" ><img src="<%=imagePath + recipes[i].image%>" alt="<%=recipes[i].altName%>" width="93" height="70"/></a>
+						<div class="asi-inner clrfix">
+							<p class="title"><a href="<%=recipes[i].adLinkID%>" ><%=recipes[i].name%></a></p>
+							<ul class="asi-variable-links">
+								<li><%=recipes[i].var1%></li>
+								<li><%=recipes[i].var2%></li>
+							</ul>
+						</div>
+					</li>
+				<%
+						}
+					}
+				%>
+			</ul>
+		</div>
+		<div class="ft clrfix"> 
+			<p><span>Sponsored by</span><a href="http://ad.doubleclick.net/clk;267622794;93411535;p" target="_blank" title="Target"><img src="http://images.foodnetwork.com/webfood/images/sales/target_february_2013/target_68x40.gif" alt="Target" width="39" height="40" atl="Target" /></a></p>
+		</div>
+		<div class="tableCell"><img id="viewTracker" src="" style="visibility: hidden;" border="0" height="1" width="1"></div>
+	</div>
+</div>
+</script>
+<script>
+var data2 = {
+	"imagePath"		: "http://images.foodnetwork.com/webfood/images/sales/target_february_2013/images/",
+	"numRecipes"	: 6,
+	"recipes"		: [{
+		"name"				: "Roast on Toast: feat. Chicken w/ Red Onion",
+		"image"				: "RX-TARGET_Toast-Chicken_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083597&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/roast-on-toast-featuring-chicken-with-red-onion-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1"				: "Get Recipe",
+		"var1Link"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083597&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/roast-on-toast-featuring-chicken-with-red-onion-recipe/index.html",
+		"var1LinkNewWindow"	: "0",
+		"var2"				: "",
+		"var2Link"			: "",
+		"var2LinkNewWindow"	: "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name"				: "Cincinnati Chili Burgers",
+		"image"				: "RX-TARGET_Cincinatti-Chili-Burgers_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083598&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/cincinnati-chili-burgers-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1"				: "Get Recipe",
+		"var1Link"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083598&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/cincinnati-chili-burgers-recipe/index.html",
+		"var1LinkNewWindow"	: "0",
+		"var2"				: "",
+		"var2Link"			: "",
+		"var2LinkNewWindow"	: "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name"				: "Tangy Tropical Pork Chops",
+		"image"				: "RX-TARGET_Hawaiian-Pizza-Pork-Chops_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083599&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/tangy-tropical-pork-chops-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1"				: "Get Recipe",
+		"var1Link"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083599&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/tangy-tropical-pork-chops-recipe/index.html",
+		"var1LinkNewWindow"	: "0",
+		"var2"				: "",
+		"var2Link"			: "",
+		"var2LinkNewWindow"	: "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Orange-Avocado Shrimp",
+		"image": "RX-TARGET_Sunshine-Shrimp_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083600&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/orange-avocado-shrimp-recipe/index.html",
+		"difficulty": "",
+		"prepTime": "",
+		"healthyLiving": "",
+		"rating": "",
+		"trackingTag": "",
+		"totalTime": "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083600&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/orange-avocado-shrimp-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Scampi Salad",
+		"image": "RX-TARGET_Scampi-Salad_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083601&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/scampi-salad-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083601&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/scampi-salad-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Shrimp & Bacon Pasta",
+		"image": "RX-TARGET_Surff-N-Turf-Pasta_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083602&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/shrimp-bacon-pasta-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083602&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/shrimp-bacon-pasta-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name"				: "Spicy Slaw Mein",
+		"image"				: "RX-TARGET_Spicy-Slaw-Mein_s4x3_sm.jpg",
+		"linkId"			: "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083603&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/spicy-slaw-mein-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083603&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/spicy-slaw-mein-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "My Big Grilled Greek Salad",
+		"image": "RX-TARGET_Grld-Grk-Sld_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083604&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/my-big-grilled-greek-salad-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083604&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/my-big-grilled-greek-salad-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Cauliflower Steaks with Red Peppers & Pesto",
+		"image": "RX-TARGET_Cauliflwr-Steaks-Roastd_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083605&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/cauliflower-steaks-with-red-peppers-pesto-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083605&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/cauliflower-steaks-with-red-peppers-pesto-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Mac & Cheese Muffins",
+		"image": "RX-TARGET_Muff-N-Cheese_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083606&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/mac-cheese-muffins-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083606&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/mac-cheese-muffins-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Dijonnaise Dynamite Salmon",
+		"image": "RX-TARGET_Dijonnaise-Dynamite-Salmon_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083607&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/dijonnaise-dynamite-salmon-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083607&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/dijonnaise-dynamite-salmon-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Savory Baked French Toast with Pepperoni",
+		"image": "RX-TARGET_Easter-Morning-Savory-French-Toast_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083624&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/savory-baked-french-toast-with-pepperoni-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083624&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/savory-baked-french-toast-with-pepperoni-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Sorbet-Stuffed Cupcakes",
+		"image": "RX-TARGET_Sorbakes_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083628&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/sorbet-stuffed-cupcakes-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083628&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/sorbet-stuffed-cupcakes-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Orange-Glazed Pork Chops",
+		"image": "RX-TARGET_Ham-Chops_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083610&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/orange-glazed-pork-chops-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083610&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/orange-glazed-pork-chops-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Lemon Cream Pancake Puffs",
+		"image": "RX-TARGET_Lemon-Cream-Pancake-Puffs_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083611&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/lemon-cream-pancake-puffs-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083611&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/lemon-cream-pancake-puffs-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Crunchy Chocolate Nests",
+		"image": "RX-TARGET_Chocolate-Easter-Nests_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083612&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/crunchy-chocolate-nests-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083612&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/crunchy-chocolate-nests-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Asparagus Mustard Mimosa",
+		"image": "RX-TARGET_Asparagus-Mimosa_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083613&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/asparagus-mustard-mimosa-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083613&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/asparagus-mustard-mimosa-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Curried Egg Salad Toasts",
+		"image": "RX-TARGET_Curried-Egg-Salad-Naan-tini_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083614&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/curried-egg-salad-toasts-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083614&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/curried-egg-salad-toasts-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Over Easy Eggs Benedict",
+		"image": "RX-TARGET_Over-Easy-Eggs-Benedict_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083615&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/over-easy-eggs-benedict-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083615&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/over-easy-eggs-benedict-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Savory Spinach Rolls",
+		"image": "RX-TARGET_Spinrolls_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083616&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/savory-spinach-rolls-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083616&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/savory-spinach-rolls-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Tropical Salsa",
+		"image": "RX-TARGET_Tropical-Salsa_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083617&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/tropical-salsa-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083617&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/tropical-salsa-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Lemon Meringue Pie-lets",
+		"image": "RX-TARGET_Lemon-Meringue-Pie-Lets_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083618&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/lemon-meringue-pie-lets-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083618&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/lemon-meringue-pie-lets-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Muffinlettas",
+		"image": "RX-TARGET_Muffinletta_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083619&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/muffinlettas-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083619&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/muffinlettas-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Shrimp Cocktail Rolls",
+		"image": "RX-TARGET_Shrimp-Cocktail-Rolls_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083620&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/shrimp-cocktail-rolls-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083620&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/shrimp-cocktail-rolls-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}, {
+		"name": "Peanut Butter & Banana Em-pie-nadas",
+		"image": "RX-TARGET_Dessert-Em-pie-nadas_s4x3_sm.jpg",
+		"linkId": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083621&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/peanut-butter-banana-em-pie-nadas-recipe/index.html",
+		"difficulty"		: "",
+		"prepTime"			: "",
+		"healthyLiving"		: "",
+		"rating"			: "",
+		"trackingTag"		: "",
+		"totalTime"			: "",
+		"var1": "Get Recipe",
+		"var1Link": "adsremote.scrippsnetworks.com/event.ng/Type=click&FlightID=&AdID=&TargetID=&Values=2083621&Redirect=http:%2f%2fwww.foodnetwork.com/recipes/peanut-butter-banana-em-pie-nadas-recipe/index.html",
+		"var1LinkNewWindow": "0",
+		"var2": "",
+		"var2Link": "",
+		"var2LinkNewWindow": "0",
+		"keywords"			: ["chicken"]
+	}]
+};
+	
+
+var el1 = document.getElementById("demo1");
+el1.innerHTML = RSI("templ", data1);
+
+var el2 = document.getElementById("demo2");
+el2.innerHTML = RSI("temp2", data2);
+
+
+</script>
